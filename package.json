@@ -1,0 +1,27 @@
+{
+  "name": "regex",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint .",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@vueuse/nuxt": "^14.2.1",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "eslint": "^10.2.0",
+    "eslint-plugin-tailwindcss": "^3.18.3",
+    "tailwindcss": "^4.2.2"
+  }
+}
