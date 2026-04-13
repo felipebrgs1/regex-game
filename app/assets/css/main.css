@@ -1,61 +1,58 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-    /* Catppuccin Latte Colors */
-    --color-rosewater: #dc8a78;
-    --color-flamingo: #dd7878;
-    --color-pink: #ea76cb;
-    --color-mauve: #8839ef;
-    --color-red: #d20f39;
-    --color-maroon: #e64553;
-    --color-peach: #fe640b;
-    --color-yellow: #df8e1d;
-    --color-green: #40a02b;
-    --color-teal: #179287;
-    --color-sky: #04a5e5;
-    --color-sapphire: #209fb5;
-    --color-blue: #1e66f5;
-    --color-lavender: #7287fd;
-    --color-text: #4c4f69;
-    --color-subtext1: #5c5f77;
-    --color-subtext0: #6c6f85;
-    --color-overlay2: #7c7f93;
-    --color-overlay1: #8c8fa1;
-    --color-overlay0: #9ca0b0;
-    --color-surface2: #acb0be;
-    --color-surface1: #bcc0cc;
-    --color-surface0: #ccd0da;
-    --color-base: #eff1f5;
-    --color-mantle: #e6e9ef;
-    --color-crust: #dce0e8;
+  /* Catppuccin Latte Colors */
+  --color-rosewater: #dc8a78;
+  --color-flamingo: #dd7878;
+  --color-pink: #ea76cb;
+  --color-mauve: #8839ef;
+  --color-red: #d20f39;
+  --color-maroon: #e64553;
+  --color-peach: #fe640b;
+  --color-yellow: #df8e1d;
+  --color-green: #40a02b;
+  --color-teal: #179287;
+  --color-sky: #04a5e5;
+  --color-sapphire: #209fb5;
+  --color-blue: #1e66f5;
+  --color-lavender: #7287fd;
+  --color-text: #4c4f69;
+  --color-subtext1: #5c5f77;
+  --color-subtext0: #6c6f85;
+  --color-overlay2: #7c7f93;
+  --color-overlay1: #8c8fa1;
+  --color-overlay0: #9ca0b0;
+  --color-surface2: #acb0be;
+  --color-surface1: #bcc0cc;
+  --color-surface0: #ccd0da;
+  --color-base: #eff1f5;
+  --color-mantle: #e6e9ef;
+  --color-crust: #dce0e8;
 
-    --font-sans: 'Quicksand', 'Inter', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: "Quicksand", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-    --shadow-latte:
-        0 4px 6px -1px rgba(76, 79, 105, 0.05),
-        0 2px 4px -1px rgba(76, 79, 105, 0.03);
-    --shadow-latte-lg:
-        0 10px 15px -3px rgba(76, 79, 105, 0.08),
-        0 4px 6px -2px rgba(76, 79, 105, 0.04);
+  --shadow-latte: 0 4px 6px -1px rgba(76, 79, 105, 0.05), 0 2px 4px -1px rgba(76, 79, 105, 0.03);
+  --shadow-latte-lg:
+    0 10px 15px -3px rgba(76, 79, 105, 0.08), 0 4px 6px -2px rgba(76, 79, 105, 0.04);
 }
 
 @layer base {
-    body {
-        @apply bg-base text-text font-sans antialiased selection:bg-rosewater/30;
-    }
+  body {
+    @apply bg-base text-text font-sans antialiased selection:bg-rosewater/30;
+  }
 }
 
 @layer components {
-    .btn-coffee {
-        @apply px-4 py-2 rounded-xl font-medium transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
-    }
+  .btn-coffee {
+    @apply px-4 py-2 rounded-xl font-medium transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
+  }
 
-    .card-latte {
-        @apply bg-mantle border border-surface0 rounded-2xl shadow-latte hover:shadow-latte-lg transition-all;
-    }
+  .card-latte {
+    @apply bg-mantle border border-surface0 rounded-2xl shadow-latte hover:shadow-latte-lg transition-all;
+  }
 
-    .input-latte {
-        @apply bg-base border border-surface1 rounded-xl px-4 py-3 focus:ring-2 focus:ring-rosewater/30 focus:border-rosewater outline-none transition-all font-mono text-sm;
-    }
+  .input-latte {
+    @apply bg-base border border-surface1 rounded-xl px-4 py-3 focus:ring-2 focus:ring-rosewater/30 focus:border-rosewater outline-none transition-all font-mono text-sm;
+  }
 }

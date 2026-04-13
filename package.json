@@ -1,13 +1,14 @@
 {
   "name": "regex",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint .",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -18,10 +19,9 @@
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.15.2",
     "@tailwindcss/vite": "^4.2.2",
-    "eslint": "^10.2.0",
-    "eslint-plugin-tailwindcss": "^3.18.3",
+    "oxfmt": "^0.45.0",
+    "oxlint": "^1.60.0",
     "tailwindcss": "^4.2.2"
   }
 }

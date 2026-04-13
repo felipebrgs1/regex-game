@@ -1,45 +1,42 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
 
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
 
-  modules: [
-    '@vueuse/nuxt',
-    '@nuxt/fonts',
-    '@nuxt/eslint',
-  ],
+  modules: ["@vueuse/nuxt", "@nuxt/fonts"],
 
   fonts: {
     families: [
-      { name: 'Inter', provider: 'google' },
-      { name: 'Quicksand', provider: 'google' },
-      { name: 'JetBrains Mono', provider: 'google' },
-      { name: 'Fira Code', provider: 'google' },
+      { name: "Inter", provider: "google" },
+      { name: "Quicksand", provider: "google" },
+      { name: "JetBrains Mono", provider: "google" },
+      { name: "Fira Code", provider: "google" },
     ],
   },
 
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: "cloudflare-pages",
   },
 
   app: {
     head: {
-      title: 'Regex Café — Aprenda Regex jogando',
+      title: "Regex Café — Aprenda Regex jogando",
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Aprenda expressões regulares resolvendo puzzles interativos.' },
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          name: "description",
+          content: "Aprenda expressões regulares resolvendo puzzles interativos.",
+        },
       ],
-      htmlAttrs: { lang: 'pt-BR' },
+      htmlAttrs: { lang: "pt-BR" },
     },
   },
-})
+});
