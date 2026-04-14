@@ -1,6 +1,13 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "regex-game",
+  "compatibility_date": "2025-07-15",
   "pages_build_output_dir": "./dist",
-  "compatibility_date": "2025-07-15"
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
 }

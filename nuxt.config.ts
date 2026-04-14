@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@vueuse/nuxt", "@nuxt/fonts"],
+  modules: ["@vueuse/nuxt", "@nuxt/fonts", "nitro-cloudflare-dev"],
 
   fonts: {
     families: [
@@ -23,6 +23,10 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: "cloudflare-pages",
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
   },
 
   app: {

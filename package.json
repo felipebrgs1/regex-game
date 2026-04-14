@@ -6,7 +6,8 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "npm run build && wrangler pages dev",
+    "deploy": "npm run build && wrangler pages deploy",
     "lint": "oxlint .",
     "format": "oxfmt .",
     "postinstall": "nuxt prepare"
@@ -20,8 +21,10 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "nitro-cloudflare-dev": "^0.2.2",
     "oxfmt": "^0.45.0",
     "oxlint": "^1.60.0",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "wrangler": "^4.82.2"
   }
 }
