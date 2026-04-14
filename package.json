@@ -4,11 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev -p 3333",
     "generate": "nuxt generate",
     "preview": "npm run build && wrangler pages dev",
     "deploy": "npm run build && wrangler pages deploy",
     "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix && oxfmt . --write",
     "format": "oxfmt .",
     "postinstall": "nuxt prepare"
   },

@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "vue", "import", "unicorn"],
+  "rules": {
+    "eqeqeq": "warn",
+    "no-console": "warn",
+    "no-debugger": "error",
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-unnecessary-type-assertion": "warn",
+    "import/no-cycle": "error"
+  }
+}

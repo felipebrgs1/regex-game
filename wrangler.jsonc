@@ -4,10 +4,8 @@
   "compatibility_date": "2025-07-15",
   "pages_build_output_dir": "./dist",
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
   "upload_source_maps": true,
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "compatibility_flags": ["nodejs_compat"],
 }

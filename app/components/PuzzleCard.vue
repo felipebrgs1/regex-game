@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import type { Puzzle } from "~/composables/usePuzzles";
+import type { Puzzle } from "~/composables/usePuzzles"
 
 const props = defineProps<{
-  puzzle: Puzzle;
-  isSolved: boolean;
-}>();
+  puzzle: Puzzle
+  isSolved: boolean
+}>()
 
 const emit = defineEmits<{
-  solved: [];
-}>();
+  solved: []
+}>()
 
-const regexInput = ref("");
+const regexInput = ref("")
 
 const regexError = computed(() => {
-  if (!regexInput.value) return null;
+  if (!regexInput.value) return null
   try {
-    new RegExp(regexInput.value);
-    return null;
+    new RegExp(regexInput.value)
+    return null
   } catch (e: unknown) {
-    return (e as Error).message;
+    return (e as Error).message
   }
-});
+})
 
 const compiledRegex = computed(() => {
-  if (!regexInput.value || regexError.value) return null;
+  if (!regexInput.value || regexError.value) return null
   try {
-    return new RegExp(`^(?:${regexInput.value})$`);
+    return new RegExp(`^(?:${regexInput.value})$`)
   } catch {
-    return null;
+    return null
   }
-});
+})
 
 interface WordResult {
-  word: string;
-  expectedMatch: boolean;
-  actualMatch: boolean;
-  isCorrect: boolean;
+  word: string
+  expectedMatch: boolean
+  actualMatch: boolean
+  isCorrect: boolean
 }
 
 const matchResults = computed((): WordResult[] => {
@@ -53,54 +53,54 @@ const matchResults = computed((): WordResult[] => {
         actualMatch: false,
         isCorrect: true,
       })),
-    ];
+    ]
   }
 
-  const regex = compiledRegex.value;
+  const regex = compiledRegex.value
   const matchResults = props.puzzle.shouldMatch.map((w) => ({
     word: w,
     expectedMatch: true,
     actualMatch: regex.test(w),
     isCorrect: regex.test(w) === true,
-  }));
-  regex.lastIndex = 0;
+  }))
+  regex.lastIndex = 0
   const noMatchResults = props.puzzle.shouldNotMatch.map((w) => ({
     word: w,
     expectedMatch: false,
     actualMatch: regex.test(w),
     isCorrect: regex.test(w) === false,
-  }));
+  }))
 
-  return [...matchResults, ...noMatchResults];
-});
+  return [...matchResults, ...noMatchResults]
+})
 
 const isPuzzleSolved = computed(() => {
-  if (!compiledRegex.value) return false;
-  return matchResults.value.every((r) => r.isCorrect);
-});
+  if (!compiledRegex.value) return false
+  return matchResults.value.every((r) => r.isCorrect)
+})
 
 watch(isPuzzleSolved, (val) => {
-  if (val) emit("solved");
-});
+  if (val) emit("solved")
+})
 
 function wordClass(result: WordResult): string {
   if (!result.expectedMatch && !result.actualMatch) {
-    return "bg-mantle text-subtext0 border-surface0/50";
+    return "bg-mantle text-subtext0 border-surface0/50"
   }
   if (result.isCorrect && result.expectedMatch) {
-    return "bg-green/10 text-green border-green/30 shadow-sm shadow-green/10";
+    return "bg-green/10 text-green border-green/30 shadow-sm shadow-green/10"
   }
   if (result.isCorrect && !result.expectedMatch) {
-    return "bg-mantle text-subtext0 border-surface0/50 italic opacity-70";
+    return "bg-mantle text-subtext0 border-surface0/50 italic opacity-70"
   }
-  return "bg-red/10 text-red border-red/30";
+  return "bg-red/10 text-red border-red/30"
 }
 
 function wordIcon(result: WordResult): string {
-  if (result.isCorrect && result.expectedMatch) return "✓";
-  if (!result.isCorrect && result.actualMatch && !result.expectedMatch) return "✗";
-  if (!result.isCorrect && result.expectedMatch && !result.actualMatch) return "✗";
-  return "·";
+  if (result.isCorrect && result.expectedMatch) return "✓"
+  if (!result.isCorrect && result.actualMatch && !result.expectedMatch) return "✗"
+  if (!result.isCorrect && result.expectedMatch && !result.actualMatch) return "✗"
+  return "·"
 }
 </script>
 
@@ -109,7 +109,6 @@ function wordIcon(result: WordResult): string {
     class="card-latte p-8 relative overflow-hidden group/card"
     :class="{ 'ring-4 ring-green/20 ring-inset border-green/40 bg-white/50': isSolved }"
   >
-    <!-- Background indicator -->
     <div
       v-if="isSolved"
       class="absolute -top-12 -right-12 w-32 h-32 bg-green/10 rounded-full blur-2xl pointer-events-none"
@@ -118,24 +117,24 @@ function wordIcon(result: WordResult): string {
     <div class="flex items-start justify-between mb-2">
       <div class="space-y-1">
         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-rosewater/80">
-          PEDIDO #{{ puzzle.id }}
+          ORDER #{{ puzzle.id }}
         </span>
         <h2
           class="text-2xl font-black text-text tracking-tight group-hover/card:translate-x-1 transition-transform"
         >
-          {{ puzzle.titulo }}
+          {{ puzzle.title }}
         </h2>
       </div>
       <div
         v-if="isSolved"
         class="bg-green/10 text-green px-3 py-1 rounded-full text-xs font-bold border border-green/20 ring-4 ring-green/5"
       >
-        Servido ✓
+        Served ✓
       </div>
     </div>
 
     <p class="text-subtext1 font-medium mb-8 max-w-xl leading-relaxed">
-      {{ puzzle.dica }}
+      {{ puzzle.hint }}
     </p>
 
     <div class="mb-8">
@@ -143,7 +142,7 @@ function wordIcon(result: WordResult): string {
         class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-subtext0 mb-2"
       >
         <span class="w-1.5 h-1.5 flex-none rounded-sm bg-rosewater"></span>
-        Sua Receita Regex
+        Your Regex Recipe
       </label>
       <div class="relative group/input">
         <div
@@ -159,7 +158,7 @@ function wordIcon(result: WordResult): string {
           autocomplete="off"
           class="input-latte w-full pl-8 pr-8 py-4 text-base focus:shadow-xl focus:shadow-rosewater/5 transition-all disabled:bg-surface0/10 disabled:text-subtext0 placeholder:italic placeholder:text-subtext0/40"
           :class="{ 'border-red/50 ring-red/10 ring-4': regexError }"
-          placeholder="escreva sua regex aqui..."
+          placeholder="write your regex here..."
         />
         <div
           class="absolute right-4 top-1/2 -translate-y-1/2 text-rosewater font-black text-lg select-none"
@@ -167,7 +166,6 @@ function wordIcon(result: WordResult): string {
           /
         </div>
 
-        <!-- Animated border -->
         <div
           class="absolute inset-x-0 -bottom-px h-0.5 bg-linear-to-r from-transparent via-rosewater to-transparent transition-transform scale-x-0 group-focus-within/input:scale-x-100 duration-500"
         ></div>
@@ -190,7 +188,7 @@ function wordIcon(result: WordResult): string {
           class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-green"
         >
           <span class="w-4 h-px bg-green/40"></span>
-          Ingredientes Aceitos
+          Match These
         </h3>
         <div class="flex flex-wrap gap-2.5">
           <span
@@ -213,7 +211,7 @@ function wordIcon(result: WordResult): string {
           class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-red/70"
         >
           <span class="w-4 h-px bg-red/30"></span>
-          Não Adicionar
+          Don't Match
         </h3>
         <div class="flex flex-wrap gap-2.5">
           <span

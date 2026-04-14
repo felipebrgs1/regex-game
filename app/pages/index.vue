@@ -1,24 +1,53 @@
 <script setup lang="ts">
-const { puzzles } = usePuzzles();
-const { isSolved, markSolved, solvedCount, totalPuzzles, progressPercent } = useProgress();
+const { puzzles } = usePuzzles()
+const { isSolved, markSolved, solvedCount, totalPuzzles, progressPercent } = useProgress()
+
+useSeoMeta({
+  title: "Regex Café — Learn Regex by Playing",
+  description:
+    "Learn regular expressions by solving interactive puzzles. A fun, hands-on way to master regex patterns.",
+  ogTitle: "Regex Café — Learn Regex by Playing",
+  ogDescription:
+    "Learn regular expressions by solving interactive puzzles. A fun, hands-on way to master regex patterns.",
+  ogUrl: "https://regex.cafe",
+  twitterCard: "summary",
+  twitterTitle: "Regex Café — Learn Regex by Playing",
+  twitterDescription:
+    "Learn regular expressions by solving interactive puzzles. A fun, hands-on way to master regex patterns.",
+})
 </script>
 
 <template>
   <NuxtLayout>
     <div class="space-y-12">
-      <section class="mx-auto max-w-2xl space-y-4 py-8 text-center">
-        <h2 class="text-text text-4xl leading-tight font-extrabold tracking-tight">
-          Bem-vindo ao Regex
-          <span class="from-rosewater to-peach bg-linear-to-r bg-clip-text text-transparent"
-            >Café</span
+      <ClientOnly>
+        <NuxtLink
+          to="/tutorial"
+          class="card-latte group flex items-center gap-6 p-6 transition-all hover:shadow-latte-lg"
+        >
+          <div
+            class="from-peach to-yellow flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-linear-to-tr shadow-lg shadow-peach/20 transition-transform group-hover:scale-110"
           >
-          ☕
-        </h2>
-        <p class="text-subtext1 px-4 text-lg leading-relaxed font-medium">
-          Escreva expressões regulares para resolver cada puzzle. Cada sucesso é um grão a mais no
-          seu estoque de conhecimento!
-        </p>
-      </section>
+            <span class="text-2xl">📖</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-peach text-[10px] font-bold uppercase tracking-[0.2em]">
+              New here?
+            </span>
+            <h3 class="text-text text-lg font-bold">Start with the Tutorial</h3>
+            <p class="text-subtext1 text-sm leading-relaxed">
+              Learn the fundamentals of regex before solving the puzzles.
+            </p>
+          </div>
+          <div class="ml-auto text-subtext0 transition-transform group-hover:translate-x-1">→</div>
+        </NuxtLink>
+
+        <template #fallback>
+          <div class="card-latte animate-pulse p-6">
+            <div class="bg-surface1 h-10 w-full rounded" />
+          </div>
+        </template>
+      </ClientOnly>
 
       <ClientOnly>
         <section class="card-latte group relative overflow-hidden p-6">
@@ -31,9 +60,9 @@ const { isSolved, markSolved, solvedCount, totalPuzzles, progressPercent } = use
           <div class="mb-4 flex items-end justify-between">
             <div class="space-y-1">
               <span class="text-subtext0 text-[10px] font-bold tracking-[0.2em] uppercase"
-                >Painel de Preparo</span
+                >Brew Progress</span
               >
-              <h3 class="text-text text-xl font-bold">Seu barista progresso</h3>
+              <h3 class="text-text text-xl font-bold">Your barista journey</h3>
             </div>
             <div class="text-right">
               <span class="text-rosewater text-3xl leading-none font-black">
@@ -61,7 +90,7 @@ const { isSolved, markSolved, solvedCount, totalPuzzles, progressPercent } = use
           >
             <p class="text-green flex items-center justify-center gap-2 text-lg font-bold">
               🏆 Master Barista!
-              <span class="text-xs font-medium">Você completou todos os pedidos.</span>
+              <span class="text-xs font-medium">You completed all orders.</span>
             </p>
           </div>
         </section>
@@ -80,7 +109,7 @@ const { isSolved, markSolved, solvedCount, totalPuzzles, progressPercent } = use
         </div>
         <div class="relative flex justify-center">
           <span class="bg-base text-subtext1 px-6 text-sm font-bold tracking-[0.3em] uppercase"
-            >O Menu de Hoje</span
+            >Today's Menu</span
           >
         </div>
       </div>
